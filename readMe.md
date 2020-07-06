@@ -1,6 +1,6 @@
 # messaging hello world
 ## tech stack
- - kotlin
+ - kotlin/java 11
  - spring boot/web
  - gradle
  - docker
