@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     // kotlin("plugin.spring") == id("org.jetbrains.kotlin.plugin.spring")
     kotlin("plugin.spring") version "1.3.72" // open kotlin classes for spring
+    kotlin("plugin.jpa") version "1.3.72" // entities with empty constructor
 }
 
 group = "com"
@@ -15,15 +16,19 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web") // spring web
     implementation(kotlin("stdlib-jdk8")) // kotlin std lib for java 8
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation(kotlin("reflect")) // reflection for data-jpa
+    runtimeOnly("org.postgresql:postgresql")
 }
 
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = "1.8"
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = "1.8"
     }
 }

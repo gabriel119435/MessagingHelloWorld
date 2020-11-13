@@ -1,0 +1,35 @@
+version: '3.5'
+
+services:
+  postgres-service:
+    container_name: postgres-cont
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "pass"
+      POSTGRES_DB: "db"
+    volumes:
+      - data1:/var/lib/postgresql/data/
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./sql/data.sql:/docker-entrypoint-initdb.d/2-data.sql
+    networks:
+      - network1
+
+  app-service:
+    container_name: app-cont
+    build: .
+    image: app-image
+    ports:
+      - "8080:8080"
+    networks:
+      - network1
+
+networks:
+  network1:
+    name: "network1"
+
+volumes:
+  data1:
+    name: "data1"

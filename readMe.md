@@ -1,11 +1,18 @@
 # messaging hello world
 ## tech stack
- - kotlin/java 11
- - spring boot/web
+ - kotlin/java 8
+ - spring boot/web/data
+ - logback
  - gradle
+ - postgres
  - docker
- 
+
+This project's objective is to have a good set of examples of the simplest usages 
+of different technologies, such as sql database, message brokers, rest apis, etc
+
 ## build
+describe better using compose with postgres
+
 on project root dir:
 
     ./gradlew build
@@ -19,3 +26,7 @@ try `localhost:8080/hello?name=someName` to receive `hello someName`
 will run a detached container named `container-name` connecting host port 5000 with container port 8080
 
 try `localhost:5000/hello?name=someName` to receive `hello someName` from dockerized application
+
+
+
+$ psql -h localhost -U user -d db

@@ -1,2 +1,1 @@
-rootProject.name = "MessagingHelloWorld"
-
+rootProject.name = "messagingHelloWorld"
